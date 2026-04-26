@@ -1,0 +1,55 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Create .env file
+      run: echo "JWT_SECRET=${{ secrets.JWT_SECRET || 'ci_test_secret_key' }}" > .env
+
+    - name: Build all services
+      run: |
+        echo "Building microservices with Docker Compose..."
+        docker compose build
+
+    - name: Start all services
+      run: |
+        echo "Starting services in background..."
+        docker compose up -d
+
+    - name: Wait for services to be ready
+      run: |
+        echo "Waiting for RabbitMQ and all services to initialize..."
+        sleep 40
+
+    - name: Check running containers
+      run: docker compose ps
+
+    - name: Health check - Gateway
+      run: |
+        echo "Testing gateway health endpoint..."
+        curl --fail http://localhost/health
+
+    - name: Health check - Auth Service
+      run: |
+        echo "Testing auth service via gateway..."
+        curl --fail -X POST http://localhost/api/auth/register \
+          -H "Content-Type: application/json" \
+          -d '{"name":"CI Test","email":"ci@test.com","password":"test1234","role":"customer"}'
+
+    - name: Shut down services
+      if: always()
+      run: docker compose down -v

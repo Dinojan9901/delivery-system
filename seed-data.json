@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "name": "Alice Customer",
+      "email": "alice@example.com",
+      "password": "password123",
+      "role": "customer"
+    },
+    {
+      "name": "Bob Admin",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "role": "admin"
+    }
+  ],
+  "sampleOrders": [
+    {
+      "restaurantName": "Pizza Palace",
+      "deliveryAddress": "42 Main Street, Colombo 03",
+      "items": [
+        { "name": "Margherita Pizza", "quantity": 1, "price": 12.99 },
+        { "name": "Garlic Bread", "quantity": 2, "price": 3.50 }
+      ],
+      "notes": "Extra cheese please"
+    },
+    {
+      "restaurantName": "Burger Hub",
+      "deliveryAddress": "7 Lake Road, Kandy",
+      "items": [
+        { "name": "Double Cheeseburger", "quantity": 2, "price": 8.99 },
+        { "name": "Fries (Large)", "quantity": 2, "price": 3.99 },
+        { "name": "Cola", "quantity": 2, "price": 1.99 }
+      ],
+      "notes": ""
+    }
+  ]
+}
