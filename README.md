@@ -217,6 +217,16 @@ GitHub Actions workflow at `.github/workflows/ci.yml` runs on every push to `mai
 
 To enable: add `JWT_SECRET` as a GitHub Actions secret in your repository settings.
 
+
+
+
+## Trigger CI/CD Pipeline
+
+To verify the GitHub Actions pipeline is working:
+
+```bash
+git commit --allow-empty -m "Trigger CI pipeline"
+git push
 ---
 
 ## Database Schemas
