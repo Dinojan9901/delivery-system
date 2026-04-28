@@ -1,5 +1,5 @@
 # QuickDeliver — Cloud-Native Food Delivery System
-
+[![CI/CD Pipeline](https://github.com/Dinojan9901/delivery-system/actions/workflows/ci.yml/badge.svg)](https://github.com/Dinojan9901/delivery-system/actions)
 > EC7204 Cloud Computing | University of Ruhuna, Faculty of Engineering | Semester 7, April 2026
 
 A microservices-based food delivery platform demonstrating core cloud computing principles: scalability, high availability, security, synchronous & asynchronous communication, and containerized deployment.
